@@ -9,7 +9,7 @@ aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/7980
 |         Model        | alpha | label smoothing[2] | mixup[3] |#Params | #FLOPs |  Top1 / Top5 |
 |:--------------------:|:-----:|:------------------:|:--------:|:------:|:------:|:------------:|
 | 1.125 MobileNet_v2(论文)|  .5   |         Yes        |   Yes       |  4.2 M |  295 M | 73.0 / 91.2 |
-| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |       | 60.2 M | - | 72.86 / - |
+| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |       | 4.2 M | - | 72.86 / - |
  
 
 ### 2.1 log信息说明
@@ -22,27 +22,29 @@ aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/7980
 * 硬件：Tesla V100 * 4
 * 框架：PaddlePaddle == 2.2.0
 ## 4. 快速开始
-### 第一步：克隆本项目
+### 4.1克隆本项目
 ```
-    https://github.com/renmada/OctConv-paddle.git
+https://github.com/renmada/OctConv-paddle.git
 ```
-### 第二步：放数据到dataset目录下，数据集目录
-### 第三步：一阶段训练
+### 4.2 放数据到dataset目录下，数据集目录
+### 4.3 一阶段训练
 ```
-    python -m paddle.distributed.launch tools/train.py -c OctMobileNetV2_1_0.yaml
+python -m paddle.distributed.launch tools/train.py -c OctMobileNetV2_1_0.yaml
 ```
-### 第四步：二阶段训练
+### 4.4 二阶段训练
 ```
-    # 需要在OctMobileNetV2_1_1.yaml文件指定epoch_296模型的路径
-    python -m paddle.distributed.launch tools/train.py -c OctMobileNetV2_1_1.yaml
-```
-## 5， 相关文件
-|         阶段        | log | 权重 |
-|:--------------------:|:-----:|:------------------:|:--------:|
-| stage1|  [stage1.log](./log/stage1.log)   |         Yes        |  
-| stage2|  [stage2.log](./log/stage2.log)|         Yes        | 
+# 需要在OctMobileNetV2_1_1.yaml文件指定epoch_296模型的路径
 
-## 5. 引用
+python -m paddle.distributed.launch tools/train.py -c OctMobileNetV2_1_1.yaml
+```
+### 4.5 相关文件
+|         阶段        | log | 权重 |
+|:--------------------:|:-----:|:------------------:|
+| stage1|  [stage1.log](./log/stage1.log)   | epoch_296.pdparams|  
+| stage2|  [stage2.log](./log/stage2.log)|                 | 
+### 4.6 评估
+
+## 5 引用
 ```
 @article{chen2019drop,
   title={Drop an Octave: Reducing Spatial Redundancy in Convolutional Neural Networks with Octave Convolution},
