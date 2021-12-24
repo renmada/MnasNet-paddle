@@ -9,13 +9,13 @@ aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/7980
 |         Model        | alpha | label smoothing[2] | mixup[3] |#Params | #FLOPs |  Top1 / Top5 |
 |:--------------------:|:-----:|:------------------:|:--------:|:------:|:------:|:------------:|
 | 1.125 MobileNet_v2(论文)|  .5   |         Yes        |   Yes       |  4.2 M |  295 M | 73.0 / 91.2 |
-| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |   Yes    | 4.2 M | - | 73.0 / - |
+| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |   Yes    | 4.2 M | - |  72.95 / - |
  
 
 ### 2.1 log信息说明
 训练分为两个阶段
 1. 用[config1](train1.yaml)的配置训练200epoch
-2. 加载阶段1的epoch_200权重，用[config2](train2.yaml)的配置训练100epoch
+2. 加载阶段1的epoch_200权重，用[config2](train2.yaml)的配置训练200epoch
 
 
 ## 3. 准备环境
@@ -39,12 +39,14 @@ python -m paddle.distributed.launch tools/train.py -c train1.yaml
 
 python -m paddle.distributed.launch tools/train.py -c train2.yaml
 ```
+此阶段可以在[aistudio](https://aistudio.baidu.com/aistudio/clusterprojectdetail/3199634)上直接运行
+
 ### 4.5 相关文件
 |         阶段        | log | 权重 |
 |:--------------------:|:-----:|:------------------:|
 | stage1|  [stage1.log](./log/stage1.log)   | [epoch_200](https://aistudio.baidu.com/aistudio/datasetdetail/122215)|  
-| stage2|  [stage2.log](./log/stage2.log)|  best_model | 
-|eval|eval.log|best_model|
+| stage2|  [stage2.log](./log/stage2.log)|  [best_model](https://aistudio.baidu.com/aistudio/datasetdetail/122215) | 
+|eval|[eval.log](./log/eval.log)|[best_model](https://aistudio.baidu.com/aistudio/datasetdetail/122215)|
 
 **[模型网络代码](./ppcls/arch/backbone/model_zoo/oct_mobilenet_v2.py)**
 
