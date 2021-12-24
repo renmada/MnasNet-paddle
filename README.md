@@ -56,6 +56,11 @@ python -m paddle.distributed.launch tools/train.py -c train2.yaml
 
 python  tools/eval.py -c eval.yaml
 ```
+### 4.7 预测
+```
+# 修改eval.yaml中的output_dir image_root cls_label_path pretrained_model的路径
+python tools/infer.py -c infer.yaml
+```
 
 ## 5 引用
 ```

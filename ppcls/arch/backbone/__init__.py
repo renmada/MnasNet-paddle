@@ -64,6 +64,7 @@ from ppcls.arch.backbone.variant_models.resnet_variant import ResNet50_last_stag
 from ppcls.arch.backbone.variant_models.vgg_variant import VGG19Sigmoid
 from ppcls.arch.backbone.model_zoo.oct_mobilenet_v2 import OctMobileNetV2_x1_125
 from ppcls.arch.backbone.model_zoo.mnasnet import mnasnet1_0
+from ppcls.arch.backbone.model_zoo.mnasnet2 import mnasnet1_0_mxnet
 
 
 
