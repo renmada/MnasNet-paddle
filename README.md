@@ -44,7 +44,7 @@ python -m paddle.distributed.launch tools/train.py -c train2.yaml
 |:--------------------:|:-----:|:------------------:|
 | stage1|  [stage1.log](./log/stage1.log)   | [epoch_200](https://aistudio.baidu.com/aistudio/datasetdetail/122215)|  
 | stage2|  [stage2.log](./log/stage2.log)|  best_model | 
-|infer|
+|eval|eval.log|best_model|
 **[模型网络代码](./ppcls/arch/backbone/model_zoo/oct_mobilenet_v2.py)**
 
 ### 4.6 评估
