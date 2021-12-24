@@ -9,13 +9,13 @@ aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/7980
 |         Model        | alpha | label smoothing[2] | mixup[3] |#Params | #FLOPs |  Top1 / Top5 |
 |:--------------------:|:-----:|:------------------:|:--------:|:------:|:------:|:------------:|
 | 1.125 MobileNet_v2(论文)|  .5   |         Yes        |   Yes       |  4.2 M |  295 M | 73.0 / 91.2 |
-| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |   Yes    | 4.2 M | - | 72.90 / - |
+| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |   Yes    | 4.2 M | - | 73.0 / - |
  
 
 ### 2.1 log信息说明
 训练分为两个阶段
 1. 用[config1](train1.yaml)的配置训练200epoch
-2. 加载阶段1epoch_200权重，用[config2](train2.yaml)的配置训练100epoch
+2. 加载阶段1的epoch_200权重，用[config2](train2.yaml)的配置训练100epoch
 
 
 ## 3. 准备环境
