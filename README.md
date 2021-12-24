@@ -26,7 +26,7 @@ aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/7980
 ```
 https://github.com/renmada/OctConv-paddle.git
 ```
-### 4.2 放数据到dataset目录下，数据集目录
+### 4.2 下载数据集，放到指定位置
 ### 4.3 一阶段训练
 ```
 # 修改train1.yaml中的output_dir image_root cls_label_path的路径
