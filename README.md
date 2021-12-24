@@ -58,7 +58,7 @@ python  tools/eval.py -c eval.yaml
 ```
 ### 4.7 预测
 ```
-# infer.yaml中的output_dir image_root cls_label_path pretrained_model的路径
+# infer.yaml中的infer_imgs image_root cls_label_path pretrained_model的路径
 
 python tools/infer.py -c infer.yaml
 ```
