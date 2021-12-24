@@ -9,13 +9,13 @@ aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/7980
 |         Model        | alpha | label smoothing[2] | mixup[3] |#Params | #FLOPs |  Top1 / Top5 |
 |:--------------------:|:-----:|:------------------:|:--------:|:------:|:------:|:------------:|
 | 1.125 MobileNet_v2(论文)|  .5   |         Yes        |   Yes       |  4.2 M |  295 M | 73.0 / 91.2 |
-| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |       | 4.2 M | - | 72.86 / - |
+| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |   Yes    | 4.2 M | - | 72.90 / - |
  
 
 ### 2.1 log信息说明
-训练两个阶段
-1. 用config1的配置训练300epoch
-2. 从阶段1中val_acc最高的epoch_296开始训练，用config2的配置训练100epoch
+训练分为两个阶段
+1. 用[config1](train1.yaml)的配置训练200epoch
+2. 加载阶段1epoch_200权重，用[config2](train2.yaml)的配置训练100epoch
 
 
 ## 3. 准备环境
@@ -29,20 +29,29 @@ https://github.com/renmada/OctConv-paddle.git
 ### 4.2 放数据到dataset目录下，数据集目录
 ### 4.3 一阶段训练
 ```
-python -m paddle.distributed.launch tools/train.py -c OctMobileNetV2_1_0.yaml
+# 修改train1.yaml中的output_dir image_root cls_label_path的路径
+
+python -m paddle.distributed.launch tools/train.py -c train1.yaml
 ```
 ### 4.4 二阶段训练
 ```
-# 需要在OctMobileNetV2_1_1.yaml文件指定epoch_296模型的路径
+# 修改train2.yaml中的output_dir image_root cls_label_path pretrained_model的路径
 
-python -m paddle.distributed.launch tools/train.py -c OctMobileNetV2_1_1.yaml
+python -m paddle.distributed.launch tools/train.py -c train2.yaml
 ```
 ### 4.5 相关文件
 |         阶段        | log | 权重 |
 |:--------------------:|:-----:|:------------------:|
-| stage1|  [stage1.log](./log/stage1.log)   | epoch_296.pdparams|  
-| stage2|  [stage2.log](./log/stage2.log)|                 | 
+| stage1|  [stage1.log](./log/stage1.log)   | [epoch_200](https://aistudio.baidu.com/aistudio/datasetdetail/122215)|  
+| stage2|  [stage2.log](./log/stage2.log)|  best_model | 
+|infer|
+**[模型网络代码](./ppcls/arch/backbone/model_zoo/oct_mobilenet_v2.py)**
+
 ### 4.6 评估
+```
+# 修改eval.yaml中的output_dir image_root cls_label_path pretrained_model的路径
+
+python  tools/eval.py -c eval.sh
 
 ## 5 引用
 ```
