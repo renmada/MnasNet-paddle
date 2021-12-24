@@ -58,8 +58,14 @@ python  tools/eval.py -c eval.yaml
 ```
 ### 4.7 预测
 ```
-# 修改eval.yaml中的output_dir image_root cls_label_path pretrained_model的路径
+# infer.yaml中的output_dir image_root cls_label_path pretrained_model的路径
+
 python tools/infer.py -c infer.yaml
+```
+
+demo图片预测结果
+```
+[{'class_ids': [285, 281, 282, 287, 286], 'scores': [0.27909, 0.20617, 0.06177, 0.01999, 0.0168], 'file_name': 'demo/cat.jpg', 'label_names': ['Egyptian cat', 'tabby, tabby cat', 'tiger cat', 'lynx, catamount', 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor']}]
 ```
 
 ## 5 引用
