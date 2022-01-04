@@ -13,7 +13,7 @@ aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/7980
  
 
 ### 2.1 log信息说明
-因为aistudio脚本任务最大时长限制，所以训练分为两个阶段
+因为受到aistudio脚本任务的最大时长限制，所以训练分为两个阶段
 1. 用[config1](train1.yaml)的配置训练200epoch
 2. 加载阶段1的epoch_200权重，用[config2](train2.yaml)的配置训练200epoch
 
@@ -57,10 +57,7 @@ python -m paddle.distributed.launch tools/train.py -c train2.yaml
 
 python -m paddle.distributed.launch tools/train.py -c train1.yaml
 ```
-```
-# 修改train1.yaml中的output_dir image_root cls_label_path的路径
-python -m paddle.distributed.launch tools/train.py -c train1.yaml
-```
+
 ### 4.7 评估
 ```
 # 修改eval.yaml中的output_dir image_root cls_label_path pretrained_model的路径
