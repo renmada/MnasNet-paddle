@@ -51,11 +51,11 @@ python -m paddle.distributed.launch tools/train.py -c train2.yaml
 **[模型网络代码](./ppcls/arch/backbone/model_zoo/oct_mobilenet_v2.py)**
 
 ### 4.6 本地训练
-如果在本地机器训练，可以把train1.yaml的epochs改为400，一次性完成训练
+如果在本地机器训练，可以用train.yaml一次性完成训练
 ```
-# 修改train1.yaml中的output_dir image_root cls_label_path的路径
+# 修改train.yaml中的output_dir image_root cls_label_path的路径
 
-python -m paddle.distributed.launch tools/train.py -c train1.yaml
+python -m paddle.distributed.launch tools/train.py -c train.yaml
 ```
 
 ### 4.7 评估
