@@ -66,12 +66,11 @@ class SepCONV(nn.Layer):
 class ExpandedConv(nn.Layer):
     def __init__(self, inp, oup, t, strides, kernel=3, same_shape=True):
         super(ExpandedConv, self).__init__()
-
         self.same_shape = same_shape
         self.strides = strides
-        self.bottleneck = nn.Sequential(Conv1x1(inp, inp*t),
-                                        DWise(inp*t, inp*t, self.strides, kernel),
-                                        Conv1x1(inp*t, oup, is_linear=True))
+        self.bottleneck = nn.Sequential(Conv1x1(inp, inp * t),
+                                        DWise(inp * t, inp * t, self.strides, kernel),
+                                        Conv1x1(inp * t, oup, is_linear=True))
 
     def forward(self, x):
         out = self.bottleneck(x)
@@ -106,7 +105,7 @@ class MNasNet(nn.Layer):
         self.last_channels = 1280
 
         self.features = []
-        self.features.append(ConvBlock(3, self.first_oup, 3, 2,))
+        self.features.append(ConvBlock(3, self.first_oup, 3, 2, ))
         self.features.append(SepCONV(self.first_oup, 16, 3, ))
         inp = 16
         for i, (t, c, n, s, k, prefix) in enumerate(self.interverted_residual_setting):
@@ -125,11 +124,14 @@ class MNasNet(nn.Layer):
         x = self.output(x)
         return x
 
+
 def mnasnet1_0_mxnet(**kwargs):
     return MNasNet(**kwargs)
 
+
 if __name__ == '__main__':
     import paddle
+
     net = MNasNet(1000)
     # x = paddle.randn([1,3, 2, 2])
     # net(x)

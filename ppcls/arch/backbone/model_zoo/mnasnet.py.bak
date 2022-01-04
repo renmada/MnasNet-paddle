@@ -51,6 +51,7 @@ def _stack(
     first = _InvertedResidual(in_ch, out_ch, kernel_size, stride, exp_factor, bn_momentum=bn_momentum)
     remaining = []
     for _ in range(1, repeats):
+        kernel_size = 3
         remaining.append(_InvertedResidual(out_ch, out_ch, kernel_size, 1, exp_factor, bn_momentum=bn_momentum))
     return nn.Sequential(first, *remaining)
 
@@ -80,6 +81,7 @@ class MNASNet(paddle.nn.Layer):
         self.alpha = alpha
         self.num_classes = class_num
         depths = _get_depths(alpha)
+        print(depths)
         layers = [
             # First layer: regular conv.
             nn.Conv2D(3, depths[0], 3, padding=1, stride=2, bias_attr=False),
@@ -91,7 +93,6 @@ class MNASNet(paddle.nn.Layer):
             nn.ReLU(),
             nn.Conv2D(depths[0], depths[1], 1, padding=0, stride=1, bias_attr=False),
             nn.BatchNorm2D(depths[1], momentum=_BN_MOMENTUM),
-            nn.ReLU(),
             # MNASNet blocks: stacks of inverted residuals.
             # kernel stride exp_factor repeats
             _stack(depths[1], depths[2], 3, 2, 3, 3, _BN_MOMENTUM),
@@ -104,19 +105,15 @@ class MNASNet(paddle.nn.Layer):
             nn.Conv2D(depths[7], 1280, 1, padding=0, stride=1, bias_attr=False),
             nn.BatchNorm2D(1280, momentum=_BN_MOMENTUM),
             nn.ReLU(),
-            nn.AdaptiveAvgPool2D(1),
-            nn.Flatten()
         ]
         self.layers = nn.Sequential(*layers)
-        self.classifier = nn.Linear(1280, class_num)
-
-        # self.classifier = nn.Sequential(nn.Dropout(p=dropout, ), nn.Linear(1280, class_num))
+        self.classifier = nn.Sequential(nn.Dropout(p=dropout, ), nn.Linear(1280, class_num))
         # self.apply(self._init_weights)
 
     def forward(self, x: Tensor) -> Tensor:
         x = self.layers(x)
         # Equivalent to global avgpool and removing H and W dimensions.
-        # x = x.mean([2, 3])
+        x = x.mean([2, 3])
         return self.classifier(x)
 
     # def _init_weights(self, layer):
@@ -193,6 +190,5 @@ if __name__ == "__main__":
     net.eval()
     inp = paddle.full([1, 3, 224, 224], 0.01)
     print(net(inp))
-    paddle.summary(model, (1, 3, 224, 224
-                           ))
+    print(net)
     # print(net.features[0])

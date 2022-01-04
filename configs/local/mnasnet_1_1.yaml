@@ -13,6 +13,7 @@ Global:
   # used for static mode and model export
   image_shape: [3, 224, 224]
   save_inference_dir: ./inference
+  seed: 134
 # model architecture
 Arch:
   name: mnasnet1_0_mxnet

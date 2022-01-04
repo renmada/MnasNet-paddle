@@ -13,14 +13,14 @@ aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/7980
  
 
 ### 2.1 log信息说明
-训练分为两个阶段
+因为aistudio脚本任务最大时长限制，所以训练分为两个阶段
 1. 用[config1](train1.yaml)的配置训练200epoch
 2. 加载阶段1的epoch_200权重，用[config2](train2.yaml)的配置训练200epoch
-
 
 ## 3. 准备环境
 * 硬件：Tesla V100 * 4
 * 框架：PaddlePaddle == 2.2.0
+
 ## 4. 快速开始
 ### 4.1克隆本项目
 ```
@@ -50,13 +50,25 @@ python -m paddle.distributed.launch tools/train.py -c train2.yaml
 
 **[模型网络代码](./ppcls/arch/backbone/model_zoo/oct_mobilenet_v2.py)**
 
-### 4.6 评估
+### 4.6 本地训练
+如果在本地机器训练，可以把train1.yaml的epochs改为400，一次性完成训练
+```
+# 修改train1.yaml中的output_dir image_root cls_label_path的路径
+
+python -m paddle.distributed.launch tools/train.py -c train1.yaml
+```
+```
+# 修改train1.yaml中的output_dir image_root cls_label_path的路径
+python -m paddle.distributed.launch tools/train.py -c train1.yaml
+```
+### 4.7 评估
 ```
 # 修改eval.yaml中的output_dir image_root cls_label_path pretrained_model的路径
 
 python  tools/eval.py -c eval.yaml
 ```
-### 4.7 预测
+
+### 4.8 预测
 ```
 # infer.yaml中的infer_imgs image_root cls_label_path pretrained_model的路径
 
