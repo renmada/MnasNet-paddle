@@ -1,0 +1,1080 @@
+[2022/01/12 10:00:39] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:00:39] root INFO: Arch : 
+[2022/01/12 10:00:39] root INFO:     class_num : 1000
+[2022/01/12 10:00:39] root INFO:     name : mnasnet1_0
+[2022/01/12 10:00:39] root INFO: DataLoader : 
+[2022/01/12 10:00:39] root INFO:     Eval : 
+[2022/01/12 10:00:39] root INFO:         dataset : 
+[2022/01/12 10:00:39] root INFO:             cls_label_path : ./dataset/ILSVRC2012/val_list.txt
+[2022/01/12 10:00:39] root INFO:             image_root : ./dataset/ILSVRC2012/
+[2022/01/12 10:00:39] root INFO:             name : ImageNetDataset
+[2022/01/12 10:00:39] root INFO:             transform_ops : 
+[2022/01/12 10:00:39] root INFO:                 DecodeImage : 
+[2022/01/12 10:00:39] root INFO:                     channel_first : False
+[2022/01/12 10:00:39] root INFO:                     to_rgb : True
+[2022/01/12 10:00:39] root INFO:                 ResizeImage : 
+[2022/01/12 10:00:39] root INFO:                     resize_short : 256
+[2022/01/12 10:00:39] root INFO:                 CropImage : 
+[2022/01/12 10:00:39] root INFO:                     size : 224
+[2022/01/12 10:00:39] root INFO:                 NormalizeImage : 
+[2022/01/12 10:00:39] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:00:39] root INFO:                     order : 
+[2022/01/12 10:00:39] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:00:39] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:00:39] root INFO:         loader : 
+[2022/01/12 10:00:39] root INFO:             num_workers : 4
+[2022/01/12 10:00:39] root INFO:             use_shared_memory : True
+[2022/01/12 10:00:39] root INFO:         sampler : 
+[2022/01/12 10:00:39] root INFO:             batch_size : 256
+[2022/01/12 10:00:39] root INFO:             drop_last : False
+[2022/01/12 10:00:39] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:00:39] root INFO:             shuffle : False
+[2022/01/12 10:00:39] root INFO:     Train : 
+[2022/01/12 10:00:39] root INFO:         dataset : 
+[2022/01/12 10:00:39] root INFO:             batch_transform_ops : 
+[2022/01/12 10:00:39] root INFO:                 MixupOperator : 
+[2022/01/12 10:00:39] root INFO:                     alpha : 0.2
+[2022/01/12 10:00:39] root INFO:             cls_label_path : ./dataset/ILSVRC2012/train_list.txt
+[2022/01/12 10:00:39] root INFO:             image_root : ./dataset/ILSVRC2012/
+[2022/01/12 10:00:39] root INFO:             name : ImageNetDataset
+[2022/01/12 10:00:39] root INFO:             transform_ops : 
+[2022/01/12 10:00:39] root INFO:                 DecodeImage : 
+[2022/01/12 10:00:39] root INFO:                     channel_first : False
+[2022/01/12 10:00:39] root INFO:                     to_rgb : True
+[2022/01/12 10:00:39] root INFO:                 RandCropImage : 
+[2022/01/12 10:00:39] root INFO:                     size : 224
+[2022/01/12 10:00:39] root INFO:                 RandFlipImage : 
+[2022/01/12 10:00:39] root INFO:                     flip_code : 1
+[2022/01/12 10:00:39] root INFO:                 NormalizeImage : 
+[2022/01/12 10:00:39] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:00:39] root INFO:                     order : 
+[2022/01/12 10:00:39] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:00:39] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:00:39] root INFO:         loader : 
+[2022/01/12 10:00:39] root INFO:             num_workers : 4
+[2022/01/12 10:00:39] root INFO:             use_shared_memory : True
+[2022/01/12 10:00:39] root INFO:         sampler : 
+[2022/01/12 10:00:39] root INFO:             batch_size : 256
+[2022/01/12 10:00:39] root INFO:             drop_last : False
+[2022/01/12 10:00:39] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:00:39] root INFO:             shuffle : True
+[2022/01/12 10:00:39] root INFO: Global : 
+[2022/01/12 10:00:39] root INFO:     checkpoints : None
+[2022/01/12 10:00:39] root INFO:     device : gpu
+[2022/01/12 10:00:39] root INFO:     epochs : 400
+[2022/01/12 10:00:39] root INFO:     eval_during_train : True
+[2022/01/12 10:00:39] root INFO:     eval_interval : 1
+[2022/01/12 10:00:39] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:00:39] root INFO:     output_dir : ./output3/
+[2022/01/12 10:00:39] root INFO:     pretrained_model : best_model
+[2022/01/12 10:00:39] root INFO:     print_batch_step : 50
+[2022/01/12 10:00:39] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:00:39] root INFO:     save_interval : 1
+[2022/01/12 10:00:39] root INFO:     seed : 134
+[2022/01/12 10:00:39] root INFO:     use_visualdl : False
+[2022/01/12 10:00:39] root INFO: Loss : 
+[2022/01/12 10:00:39] root INFO:     Eval : 
+[2022/01/12 10:00:39] root INFO:         CELoss : 
+[2022/01/12 10:00:39] root INFO:             weight : 1.0
+[2022/01/12 10:00:39] root INFO:     Train : 
+[2022/01/12 10:00:39] root INFO:         CELoss : 
+[2022/01/12 10:00:39] root INFO:             epsilon : 0.1
+[2022/01/12 10:00:39] root INFO:             weight : 1.0
+[2022/01/12 10:00:39] root INFO: Metric : 
+[2022/01/12 10:00:39] root INFO:     Eval : 
+[2022/01/12 10:00:39] root INFO:         TopkAcc : 
+[2022/01/12 10:00:39] root INFO:             topk : [1]
+[2022/01/12 10:00:39] root INFO: Optimizer : 
+[2022/01/12 10:00:39] root INFO:     lr : 
+[2022/01/12 10:00:39] root INFO:         learning_rate : 0.4
+[2022/01/12 10:00:39] root INFO:         name : Cosine
+[2022/01/12 10:00:39] root INFO:         warmup_epoch : 5
+[2022/01/12 10:00:39] root INFO:     momentum : 0.9
+[2022/01/12 10:00:39] root INFO:     name : Momentum
+[2022/01/12 10:00:39] root INFO:     regularizer : 
+[2022/01/12 10:00:39] root INFO:         coeff : 3e-05
+[2022/01/12 10:00:39] root INFO:         name : L2
+[2022/01/12 10:00:39] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:02:26] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:02:26] root INFO: Arch : 
+[2022/01/12 10:02:26] root INFO:     class_num : 1000
+[2022/01/12 10:02:26] root INFO:     name : mnasnet1_0
+[2022/01/12 10:02:26] root INFO: DataLoader : 
+[2022/01/12 10:02:26] root INFO:     Eval : 
+[2022/01/12 10:02:26] root INFO:         dataset : 
+[2022/01/12 10:02:26] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:02:26] root INFO:             image_root : ../imagenet
+[2022/01/12 10:02:26] root INFO:             name : ImageNetDataset
+[2022/01/12 10:02:26] root INFO:             transform_ops : 
+[2022/01/12 10:02:26] root INFO:                 DecodeImage : 
+[2022/01/12 10:02:26] root INFO:                     channel_first : False
+[2022/01/12 10:02:26] root INFO:                     to_rgb : True
+[2022/01/12 10:02:26] root INFO:                 ResizeImage : 
+[2022/01/12 10:02:26] root INFO:                     resize_short : 256
+[2022/01/12 10:02:26] root INFO:                 CropImage : 
+[2022/01/12 10:02:26] root INFO:                     size : 224
+[2022/01/12 10:02:26] root INFO:                 NormalizeImage : 
+[2022/01/12 10:02:26] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:02:26] root INFO:                     order : 
+[2022/01/12 10:02:26] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:02:26] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:02:26] root INFO:         loader : 
+[2022/01/12 10:02:26] root INFO:             num_workers : 4
+[2022/01/12 10:02:26] root INFO:             use_shared_memory : True
+[2022/01/12 10:02:26] root INFO:         sampler : 
+[2022/01/12 10:02:26] root INFO:             batch_size : 256
+[2022/01/12 10:02:26] root INFO:             drop_last : False
+[2022/01/12 10:02:26] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:02:26] root INFO:             shuffle : False
+[2022/01/12 10:02:26] root INFO:     Train : 
+[2022/01/12 10:02:26] root INFO:         dataset : 
+[2022/01/12 10:02:26] root INFO:             batch_transform_ops : 
+[2022/01/12 10:02:26] root INFO:                 MixupOperator : 
+[2022/01/12 10:02:26] root INFO:                     alpha : 0.2
+[2022/01/12 10:02:26] root INFO:             cls_label_path : ./dataset/ILSVRC2012/train_list.txt
+[2022/01/12 10:02:26] root INFO:             image_root : ./dataset/ILSVRC2012/
+[2022/01/12 10:02:26] root INFO:             name : ImageNetDataset
+[2022/01/12 10:02:26] root INFO:             transform_ops : 
+[2022/01/12 10:02:26] root INFO:                 DecodeImage : 
+[2022/01/12 10:02:26] root INFO:                     channel_first : False
+[2022/01/12 10:02:26] root INFO:                     to_rgb : True
+[2022/01/12 10:02:26] root INFO:                 RandCropImage : 
+[2022/01/12 10:02:26] root INFO:                     size : 224
+[2022/01/12 10:02:26] root INFO:                 RandFlipImage : 
+[2022/01/12 10:02:26] root INFO:                     flip_code : 1
+[2022/01/12 10:02:26] root INFO:                 NormalizeImage : 
+[2022/01/12 10:02:26] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:02:26] root INFO:                     order : 
+[2022/01/12 10:02:26] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:02:26] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:02:26] root INFO:         loader : 
+[2022/01/12 10:02:26] root INFO:             num_workers : 4
+[2022/01/12 10:02:26] root INFO:             use_shared_memory : True
+[2022/01/12 10:02:26] root INFO:         sampler : 
+[2022/01/12 10:02:26] root INFO:             batch_size : 256
+[2022/01/12 10:02:26] root INFO:             drop_last : False
+[2022/01/12 10:02:26] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:02:26] root INFO:             shuffle : True
+[2022/01/12 10:02:26] root INFO: Global : 
+[2022/01/12 10:02:26] root INFO:     checkpoints : None
+[2022/01/12 10:02:26] root INFO:     device : gpu
+[2022/01/12 10:02:26] root INFO:     epochs : 400
+[2022/01/12 10:02:26] root INFO:     eval_during_train : True
+[2022/01/12 10:02:26] root INFO:     eval_interval : 1
+[2022/01/12 10:02:26] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:02:26] root INFO:     output_dir : ./output3/
+[2022/01/12 10:02:26] root INFO:     pretrained_model : best_model
+[2022/01/12 10:02:26] root INFO:     print_batch_step : 50
+[2022/01/12 10:02:26] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:02:26] root INFO:     save_interval : 1
+[2022/01/12 10:02:26] root INFO:     seed : 134
+[2022/01/12 10:02:26] root INFO:     use_visualdl : False
+[2022/01/12 10:02:26] root INFO: Loss : 
+[2022/01/12 10:02:26] root INFO:     Eval : 
+[2022/01/12 10:02:26] root INFO:         CELoss : 
+[2022/01/12 10:02:26] root INFO:             weight : 1.0
+[2022/01/12 10:02:26] root INFO:     Train : 
+[2022/01/12 10:02:26] root INFO:         CELoss : 
+[2022/01/12 10:02:26] root INFO:             epsilon : 0.1
+[2022/01/12 10:02:26] root INFO:             weight : 1.0
+[2022/01/12 10:02:26] root INFO: Metric : 
+[2022/01/12 10:02:26] root INFO:     Eval : 
+[2022/01/12 10:02:26] root INFO:         TopkAcc : 
+[2022/01/12 10:02:26] root INFO:             topk : [1]
+[2022/01/12 10:02:26] root INFO: Optimizer : 
+[2022/01/12 10:02:26] root INFO:     lr : 
+[2022/01/12 10:02:26] root INFO:         learning_rate : 0.4
+[2022/01/12 10:02:26] root INFO:         name : Cosine
+[2022/01/12 10:02:26] root INFO:         warmup_epoch : 5
+[2022/01/12 10:02:26] root INFO:     momentum : 0.9
+[2022/01/12 10:02:26] root INFO:     name : Momentum
+[2022/01/12 10:02:26] root INFO:     regularizer : 
+[2022/01/12 10:02:26] root INFO:         coeff : 3e-05
+[2022/01/12 10:02:26] root INFO:         name : L2
+[2022/01/12 10:02:26] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:03:58] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:03:58] root INFO: Arch : 
+[2022/01/12 10:03:58] root INFO:     class_num : 1000
+[2022/01/12 10:03:58] root INFO:     name : mnasnet1_0
+[2022/01/12 10:03:58] root INFO: DataLoader : 
+[2022/01/12 10:03:58] root INFO:     Eval : 
+[2022/01/12 10:03:58] root INFO:         dataset : 
+[2022/01/12 10:03:58] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:03:58] root INFO:             image_root : ../imagenet
+[2022/01/12 10:03:58] root INFO:             name : ImageNetDataset
+[2022/01/12 10:03:58] root INFO:             transform_ops : 
+[2022/01/12 10:03:58] root INFO:                 DecodeImage : 
+[2022/01/12 10:03:58] root INFO:                     channel_first : False
+[2022/01/12 10:03:58] root INFO:                     to_rgb : True
+[2022/01/12 10:03:58] root INFO:                 ResizeImage : 
+[2022/01/12 10:03:58] root INFO:                     resize_short : 256
+[2022/01/12 10:03:58] root INFO:                 CropImage : 
+[2022/01/12 10:03:58] root INFO:                     size : 224
+[2022/01/12 10:03:58] root INFO:                 NormalizeImage : 
+[2022/01/12 10:03:58] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:03:58] root INFO:                     order : 
+[2022/01/12 10:03:58] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:03:58] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:03:58] root INFO:         loader : 
+[2022/01/12 10:03:58] root INFO:             num_workers : 4
+[2022/01/12 10:03:58] root INFO:             use_shared_memory : True
+[2022/01/12 10:03:58] root INFO:         sampler : 
+[2022/01/12 10:03:58] root INFO:             batch_size : 256
+[2022/01/12 10:03:58] root INFO:             drop_last : False
+[2022/01/12 10:03:58] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:03:58] root INFO:             shuffle : False
+[2022/01/12 10:03:58] root INFO:     Train : 
+[2022/01/12 10:03:58] root INFO:         dataset : 
+[2022/01/12 10:03:58] root INFO:             batch_transform_ops : 
+[2022/01/12 10:03:58] root INFO:                 MixupOperator : 
+[2022/01/12 10:03:58] root INFO:                     alpha : 0.2
+[2022/01/12 10:03:58] root INFO:             cls_label_path : ../imagenet/train_list.txt
+[2022/01/12 10:03:58] root INFO:             image_root : ../imagenet/
+[2022/01/12 10:03:58] root INFO:             name : ImageNetDataset
+[2022/01/12 10:03:58] root INFO:             transform_ops : 
+[2022/01/12 10:03:58] root INFO:                 DecodeImage : 
+[2022/01/12 10:03:58] root INFO:                     channel_first : False
+[2022/01/12 10:03:58] root INFO:                     to_rgb : True
+[2022/01/12 10:03:58] root INFO:                 RandCropImage : 
+[2022/01/12 10:03:58] root INFO:                     size : 224
+[2022/01/12 10:03:58] root INFO:                 RandFlipImage : 
+[2022/01/12 10:03:58] root INFO:                     flip_code : 1
+[2022/01/12 10:03:58] root INFO:                 NormalizeImage : 
+[2022/01/12 10:03:58] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:03:58] root INFO:                     order : 
+[2022/01/12 10:03:58] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:03:58] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:03:58] root INFO:         loader : 
+[2022/01/12 10:03:58] root INFO:             num_workers : 4
+[2022/01/12 10:03:58] root INFO:             use_shared_memory : True
+[2022/01/12 10:03:58] root INFO:         sampler : 
+[2022/01/12 10:03:58] root INFO:             batch_size : 256
+[2022/01/12 10:03:58] root INFO:             drop_last : False
+[2022/01/12 10:03:58] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:03:58] root INFO:             shuffle : True
+[2022/01/12 10:03:58] root INFO: Global : 
+[2022/01/12 10:03:58] root INFO:     checkpoints : None
+[2022/01/12 10:03:58] root INFO:     device : gpu
+[2022/01/12 10:03:58] root INFO:     epochs : 400
+[2022/01/12 10:03:58] root INFO:     eval_during_train : True
+[2022/01/12 10:03:58] root INFO:     eval_interval : 1
+[2022/01/12 10:03:58] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:03:58] root INFO:     output_dir : ./output3/
+[2022/01/12 10:03:58] root INFO:     pretrained_model : best_model
+[2022/01/12 10:03:58] root INFO:     print_batch_step : 50
+[2022/01/12 10:03:58] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:03:58] root INFO:     save_interval : 1
+[2022/01/12 10:03:58] root INFO:     seed : 134
+[2022/01/12 10:03:58] root INFO:     use_visualdl : False
+[2022/01/12 10:03:58] root INFO: Loss : 
+[2022/01/12 10:03:58] root INFO:     Eval : 
+[2022/01/12 10:03:58] root INFO:         CELoss : 
+[2022/01/12 10:03:58] root INFO:             weight : 1.0
+[2022/01/12 10:03:58] root INFO:     Train : 
+[2022/01/12 10:03:58] root INFO:         CELoss : 
+[2022/01/12 10:03:58] root INFO:             epsilon : 0.1
+[2022/01/12 10:03:58] root INFO:             weight : 1.0
+[2022/01/12 10:03:58] root INFO: Metric : 
+[2022/01/12 10:03:58] root INFO:     Eval : 
+[2022/01/12 10:03:58] root INFO:         TopkAcc : 
+[2022/01/12 10:03:58] root INFO:             topk : [1]
+[2022/01/12 10:03:58] root INFO: Optimizer : 
+[2022/01/12 10:03:58] root INFO:     lr : 
+[2022/01/12 10:03:58] root INFO:         learning_rate : 0.4
+[2022/01/12 10:03:58] root INFO:         name : Cosine
+[2022/01/12 10:03:58] root INFO:         warmup_epoch : 5
+[2022/01/12 10:03:58] root INFO:     momentum : 0.9
+[2022/01/12 10:03:58] root INFO:     name : Momentum
+[2022/01/12 10:03:58] root INFO:     regularizer : 
+[2022/01/12 10:03:58] root INFO:         coeff : 3e-05
+[2022/01/12 10:03:58] root INFO:         name : L2
+[2022/01/12 10:03:58] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:04:19] root INFO: [Eval][Epoch 0][Iter: 0/196]CELoss: 1.29849, loss: 1.29849, top1: 0.71094, batch_cost: 14.00062s, reader_cost: 13.00039, ips: 18.28490 images/sec
+[2022/01/12 10:06:31] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:06:31] root INFO: Arch : 
+[2022/01/12 10:06:31] root INFO:     class_num : 1000
+[2022/01/12 10:06:31] root INFO:     name : mnasnet1_0
+[2022/01/12 10:06:31] root INFO: DataLoader : 
+[2022/01/12 10:06:31] root INFO:     Eval : 
+[2022/01/12 10:06:31] root INFO:         dataset : 
+[2022/01/12 10:06:31] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:06:31] root INFO:             image_root : ../imagenet
+[2022/01/12 10:06:31] root INFO:             name : ImageNetDataset
+[2022/01/12 10:06:31] root INFO:             transform_ops : 
+[2022/01/12 10:06:31] root INFO:                 DecodeImage : 
+[2022/01/12 10:06:31] root INFO:                     channel_first : False
+[2022/01/12 10:06:31] root INFO:                     to_rgb : True
+[2022/01/12 10:06:31] root INFO:                 ResizeImage : 
+[2022/01/12 10:06:31] root INFO:                     resize_short : 256
+[2022/01/12 10:06:31] root INFO:                 CropImage : 
+[2022/01/12 10:06:31] root INFO:                     size : 224
+[2022/01/12 10:06:31] root INFO:                 NormalizeImage : 
+[2022/01/12 10:06:31] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:06:31] root INFO:                     order : 
+[2022/01/12 10:06:31] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:06:31] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:06:31] root INFO:         loader : 
+[2022/01/12 10:06:31] root INFO:             num_workers : 4
+[2022/01/12 10:06:31] root INFO:             use_shared_memory : True
+[2022/01/12 10:06:31] root INFO:         sampler : 
+[2022/01/12 10:06:31] root INFO:             batch_size : 256
+[2022/01/12 10:06:31] root INFO:             drop_last : False
+[2022/01/12 10:06:31] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:06:31] root INFO:             shuffle : False
+[2022/01/12 10:06:31] root INFO:     Train : 
+[2022/01/12 10:06:31] root INFO:         dataset : 
+[2022/01/12 10:06:31] root INFO:             batch_transform_ops : 
+[2022/01/12 10:06:31] root INFO:                 MixupOperator : 
+[2022/01/12 10:06:31] root INFO:                     alpha : 0.2
+[2022/01/12 10:06:31] root INFO:             cls_label_path : ../imagenet/train_list.txt
+[2022/01/12 10:06:31] root INFO:             image_root : ../imagenet/
+[2022/01/12 10:06:31] root INFO:             name : ImageNetDataset
+[2022/01/12 10:06:31] root INFO:             transform_ops : 
+[2022/01/12 10:06:31] root INFO:                 DecodeImage : 
+[2022/01/12 10:06:31] root INFO:                     channel_first : False
+[2022/01/12 10:06:31] root INFO:                     to_rgb : True
+[2022/01/12 10:06:31] root INFO:                 RandCropImage : 
+[2022/01/12 10:06:31] root INFO:                     size : 224
+[2022/01/12 10:06:31] root INFO:                 RandFlipImage : 
+[2022/01/12 10:06:31] root INFO:                     flip_code : 1
+[2022/01/12 10:06:31] root INFO:                 NormalizeImage : 
+[2022/01/12 10:06:31] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:06:31] root INFO:                     order : 
+[2022/01/12 10:06:31] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:06:31] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:06:31] root INFO:         loader : 
+[2022/01/12 10:06:31] root INFO:             num_workers : 4
+[2022/01/12 10:06:31] root INFO:             use_shared_memory : True
+[2022/01/12 10:06:31] root INFO:         sampler : 
+[2022/01/12 10:06:31] root INFO:             batch_size : 256
+[2022/01/12 10:06:31] root INFO:             drop_last : False
+[2022/01/12 10:06:31] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:06:31] root INFO:             shuffle : True
+[2022/01/12 10:06:31] root INFO: Global : 
+[2022/01/12 10:06:31] root INFO:     checkpoints : None
+[2022/01/12 10:06:31] root INFO:     device : gpu
+[2022/01/12 10:06:31] root INFO:     epochs : 400
+[2022/01/12 10:06:31] root INFO:     eval_during_train : True
+[2022/01/12 10:06:31] root INFO:     eval_interval : 1
+[2022/01/12 10:06:31] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:06:31] root INFO:     output_dir : ./output3/
+[2022/01/12 10:06:31] root INFO:     pretrained_model : best_model
+[2022/01/12 10:06:31] root INFO:     print_batch_step : 50
+[2022/01/12 10:06:31] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:06:31] root INFO:     save_interval : 1
+[2022/01/12 10:06:31] root INFO:     seed : 134
+[2022/01/12 10:06:31] root INFO:     use_visualdl : False
+[2022/01/12 10:06:31] root INFO: Loss : 
+[2022/01/12 10:06:31] root INFO:     Eval : 
+[2022/01/12 10:06:31] root INFO:         CELoss : 
+[2022/01/12 10:06:31] root INFO:             weight : 1.0
+[2022/01/12 10:06:31] root INFO:     Train : 
+[2022/01/12 10:06:31] root INFO:         CELoss : 
+[2022/01/12 10:06:31] root INFO:             epsilon : 0.1
+[2022/01/12 10:06:31] root INFO:             weight : 1.0
+[2022/01/12 10:06:31] root INFO: Metric : 
+[2022/01/12 10:06:31] root INFO:     Eval : 
+[2022/01/12 10:06:31] root INFO:         TopkAcc : 
+[2022/01/12 10:06:31] root INFO:             topk : [1]
+[2022/01/12 10:06:31] root INFO: Optimizer : 
+[2022/01/12 10:06:31] root INFO:     lr : 
+[2022/01/12 10:06:31] root INFO:         learning_rate : 0.4
+[2022/01/12 10:06:31] root INFO:         name : Cosine
+[2022/01/12 10:06:31] root INFO:         warmup_epoch : 5
+[2022/01/12 10:06:31] root INFO:     momentum : 0.9
+[2022/01/12 10:06:31] root INFO:     name : Momentum
+[2022/01/12 10:06:31] root INFO:     regularizer : 
+[2022/01/12 10:06:31] root INFO:         coeff : 3e-05
+[2022/01/12 10:06:31] root INFO:         name : L2
+[2022/01/12 10:06:31] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:06:43] root INFO: [Eval][Epoch 0][Iter: 0/196]CELoss: 1.29849, loss: 1.29849, top1: 0.71094, batch_cost: 6.82021s, reader_cost: 6.64878, ips: 37.53550 images/sec
+[2022/01/12 10:07:59] root INFO: [Eval][Epoch 0][Iter: 50/196]CELoss: 1.31364, loss: 1.31364, top1: 0.71875, batch_cost: 1.51379s, reader_cost: 1.35743, ips: 169.11219 images/sec
+[2022/01/12 10:10:41] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:10:41] root INFO: Arch : 
+[2022/01/12 10:10:41] root INFO:     class_num : 1000
+[2022/01/12 10:10:41] root INFO:     name : mnasnet1_0
+[2022/01/12 10:10:41] root INFO: DataLoader : 
+[2022/01/12 10:10:41] root INFO:     Eval : 
+[2022/01/12 10:10:41] root INFO:         dataset : 
+[2022/01/12 10:10:41] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:10:41] root INFO:             image_root : ../imagenet
+[2022/01/12 10:10:41] root INFO:             name : ImageNetDataset
+[2022/01/12 10:10:41] root INFO:             transform_ops : 
+[2022/01/12 10:10:41] root INFO:                 DecodeImage : 
+[2022/01/12 10:10:41] root INFO:                     channel_first : False
+[2022/01/12 10:10:41] root INFO:                     to_rgb : True
+[2022/01/12 10:10:41] root INFO:                 ResizeImage : 
+[2022/01/12 10:10:41] root INFO:                     resize_short : 256
+[2022/01/12 10:10:41] root INFO:                 CropImage : 
+[2022/01/12 10:10:41] root INFO:                     size : 224
+[2022/01/12 10:10:41] root INFO:                 NormalizeImage : 
+[2022/01/12 10:10:41] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:10:41] root INFO:                     order : 
+[2022/01/12 10:10:41] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:10:41] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:10:41] root INFO:         loader : 
+[2022/01/12 10:10:41] root INFO:             num_workers : 0
+[2022/01/12 10:10:41] root INFO:             use_shared_memory : True
+[2022/01/12 10:10:41] root INFO:         sampler : 
+[2022/01/12 10:10:41] root INFO:             batch_size : 256
+[2022/01/12 10:10:41] root INFO:             drop_last : False
+[2022/01/12 10:10:41] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:10:41] root INFO:             shuffle : False
+[2022/01/12 10:10:41] root INFO:     Train : 
+[2022/01/12 10:10:41] root INFO:         dataset : 
+[2022/01/12 10:10:41] root INFO:             batch_transform_ops : 
+[2022/01/12 10:10:41] root INFO:                 MixupOperator : 
+[2022/01/12 10:10:41] root INFO:                     alpha : 0.2
+[2022/01/12 10:10:41] root INFO:             cls_label_path : ../imagenet/train_list.txt
+[2022/01/12 10:10:41] root INFO:             image_root : ../imagenet/
+[2022/01/12 10:10:41] root INFO:             name : ImageNetDataset
+[2022/01/12 10:10:41] root INFO:             transform_ops : 
+[2022/01/12 10:10:41] root INFO:                 DecodeImage : 
+[2022/01/12 10:10:41] root INFO:                     channel_first : False
+[2022/01/12 10:10:41] root INFO:                     to_rgb : True
+[2022/01/12 10:10:41] root INFO:                 RandCropImage : 
+[2022/01/12 10:10:41] root INFO:                     size : 224
+[2022/01/12 10:10:41] root INFO:                 RandFlipImage : 
+[2022/01/12 10:10:41] root INFO:                     flip_code : 1
+[2022/01/12 10:10:41] root INFO:                 NormalizeImage : 
+[2022/01/12 10:10:41] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:10:41] root INFO:                     order : 
+[2022/01/12 10:10:41] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:10:41] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:10:41] root INFO:         loader : 
+[2022/01/12 10:10:41] root INFO:             num_workers : 4
+[2022/01/12 10:10:41] root INFO:             use_shared_memory : True
+[2022/01/12 10:10:41] root INFO:         sampler : 
+[2022/01/12 10:10:41] root INFO:             batch_size : 256
+[2022/01/12 10:10:41] root INFO:             drop_last : False
+[2022/01/12 10:10:41] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:10:41] root INFO:             shuffle : True
+[2022/01/12 10:10:41] root INFO: Global : 
+[2022/01/12 10:10:41] root INFO:     checkpoints : None
+[2022/01/12 10:10:41] root INFO:     device : gpu
+[2022/01/12 10:10:41] root INFO:     epochs : 400
+[2022/01/12 10:10:41] root INFO:     eval_during_train : True
+[2022/01/12 10:10:41] root INFO:     eval_interval : 1
+[2022/01/12 10:10:41] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:10:41] root INFO:     output_dir : ./output3/
+[2022/01/12 10:10:41] root INFO:     pretrained_model : best_model
+[2022/01/12 10:10:41] root INFO:     print_batch_step : 50
+[2022/01/12 10:10:41] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:10:41] root INFO:     save_interval : 1
+[2022/01/12 10:10:41] root INFO:     seed : 134
+[2022/01/12 10:10:41] root INFO:     use_visualdl : False
+[2022/01/12 10:10:41] root INFO: Loss : 
+[2022/01/12 10:10:41] root INFO:     Eval : 
+[2022/01/12 10:10:41] root INFO:         CELoss : 
+[2022/01/12 10:10:41] root INFO:             weight : 1.0
+[2022/01/12 10:10:41] root INFO:     Train : 
+[2022/01/12 10:10:41] root INFO:         CELoss : 
+[2022/01/12 10:10:41] root INFO:             epsilon : 0.1
+[2022/01/12 10:10:41] root INFO:             weight : 1.0
+[2022/01/12 10:10:41] root INFO: Metric : 
+[2022/01/12 10:10:41] root INFO:     Eval : 
+[2022/01/12 10:10:41] root INFO:         TopkAcc : 
+[2022/01/12 10:10:41] root INFO:             topk : [1]
+[2022/01/12 10:10:41] root INFO: Optimizer : 
+[2022/01/12 10:10:41] root INFO:     lr : 
+[2022/01/12 10:10:41] root INFO:         learning_rate : 0.4
+[2022/01/12 10:10:41] root INFO:         name : Cosine
+[2022/01/12 10:10:41] root INFO:         warmup_epoch : 5
+[2022/01/12 10:10:41] root INFO:     momentum : 0.9
+[2022/01/12 10:10:41] root INFO:     name : Momentum
+[2022/01/12 10:10:41] root INFO:     regularizer : 
+[2022/01/12 10:10:41] root INFO:         coeff : 3e-05
+[2022/01/12 10:10:41] root INFO:         name : L2
+[2022/01/12 10:10:41] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:10:49] root INFO: [Eval][Epoch 0][Iter: 0/196]CELoss: 1.29849, loss: 1.29849, top1: 0.71094, batch_cost: 2.85002s, reader_cost: 2.76214, ips: 89.82389 images/sec
+[2022/01/12 10:12:51] root INFO: [Eval][Epoch 0][Iter: 50/196]CELoss: 1.31364, loss: 1.31364, top1: 0.71875, batch_cost: 2.44572s, reader_cost: 2.36423, ips: 104.67275 images/sec
+[2022/01/12 10:14:57] root INFO: [Eval][Epoch 0][Iter: 100/196]CELoss: 1.31675, loss: 1.31675, top1: 0.69922, batch_cost: 2.48125s, reader_cost: 2.39963, ips: 103.17369 images/sec
+[2022/01/12 10:17:07] root INFO: [Eval][Epoch 0][Iter: 150/196]CELoss: 1.25394, loss: 1.25394, top1: 0.71875, batch_cost: 2.52421s, reader_cost: 2.44263, ips: 101.41788 images/sec
+[2022/01/12 10:19:04] root INFO: [Eval][Epoch 0][Avg]CELoss: 1.25967, loss: 1.25967, top1: 0.73350
+[2022/01/12 10:22:46] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:22:46] root INFO: Arch : 
+[2022/01/12 10:22:46] root INFO:     class_num : 1000
+[2022/01/12 10:22:46] root INFO:     name : mnasnet1_0
+[2022/01/12 10:22:46] root INFO: DataLoader : 
+[2022/01/12 10:22:46] root INFO:     Eval : 
+[2022/01/12 10:22:46] root INFO:         dataset : 
+[2022/01/12 10:22:46] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:22:46] root INFO:             image_root : ../imagenet
+[2022/01/12 10:22:46] root INFO:             name : ImageNetDataset
+[2022/01/12 10:22:46] root INFO:             transform_ops : 
+[2022/01/12 10:22:46] root INFO:                 DecodeImage : 
+[2022/01/12 10:22:46] root INFO:                     channel_first : False
+[2022/01/12 10:22:46] root INFO:                     to_rgb : True
+[2022/01/12 10:22:46] root INFO:                 ResizeImage : 
+[2022/01/12 10:22:46] root INFO:                     resize_short : 256
+[2022/01/12 10:22:46] root INFO:                 CropImage : 
+[2022/01/12 10:22:46] root INFO:                     size : 224
+[2022/01/12 10:22:46] root INFO:                 NormalizeImage : 
+[2022/01/12 10:22:46] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:22:46] root INFO:                     order : 
+[2022/01/12 10:22:46] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:22:46] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:22:46] root INFO:         loader : 
+[2022/01/12 10:22:46] root INFO:             num_workers : 4
+[2022/01/12 10:22:46] root INFO:             use_shared_memory : True
+[2022/01/12 10:22:46] root INFO:         sampler : 
+[2022/01/12 10:22:46] root INFO:             batch_size : 1024
+[2022/01/12 10:22:46] root INFO:             drop_last : False
+[2022/01/12 10:22:46] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:22:46] root INFO:             shuffle : False
+[2022/01/12 10:22:46] root INFO:     Train : 
+[2022/01/12 10:22:46] root INFO:         dataset : 
+[2022/01/12 10:22:46] root INFO:             batch_transform_ops : 
+[2022/01/12 10:22:46] root INFO:                 MixupOperator : 
+[2022/01/12 10:22:46] root INFO:                     alpha : 0.2
+[2022/01/12 10:22:46] root INFO:             cls_label_path : ../imagenet/train_list.txt
+[2022/01/12 10:22:46] root INFO:             image_root : ../imagenet/
+[2022/01/12 10:22:46] root INFO:             name : ImageNetDataset
+[2022/01/12 10:22:46] root INFO:             transform_ops : 
+[2022/01/12 10:22:46] root INFO:                 DecodeImage : 
+[2022/01/12 10:22:46] root INFO:                     channel_first : False
+[2022/01/12 10:22:46] root INFO:                     to_rgb : True
+[2022/01/12 10:22:46] root INFO:                 RandCropImage : 
+[2022/01/12 10:22:46] root INFO:                     size : 224
+[2022/01/12 10:22:46] root INFO:                 RandFlipImage : 
+[2022/01/12 10:22:46] root INFO:                     flip_code : 1
+[2022/01/12 10:22:46] root INFO:                 NormalizeImage : 
+[2022/01/12 10:22:46] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:22:46] root INFO:                     order : 
+[2022/01/12 10:22:46] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:22:46] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:22:46] root INFO:         loader : 
+[2022/01/12 10:22:46] root INFO:             num_workers : 4
+[2022/01/12 10:22:46] root INFO:             use_shared_memory : True
+[2022/01/12 10:22:46] root INFO:         sampler : 
+[2022/01/12 10:22:46] root INFO:             batch_size : 256
+[2022/01/12 10:22:46] root INFO:             drop_last : False
+[2022/01/12 10:22:46] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:22:46] root INFO:             shuffle : True
+[2022/01/12 10:22:46] root INFO: Global : 
+[2022/01/12 10:22:46] root INFO:     checkpoints : None
+[2022/01/12 10:22:46] root INFO:     device : gpu
+[2022/01/12 10:22:46] root INFO:     epochs : 400
+[2022/01/12 10:22:46] root INFO:     eval_during_train : True
+[2022/01/12 10:22:46] root INFO:     eval_interval : 1
+[2022/01/12 10:22:46] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:22:46] root INFO:     output_dir : ./output3/
+[2022/01/12 10:22:46] root INFO:     pretrained_model : epoch_199
+[2022/01/12 10:22:46] root INFO:     print_batch_step : 50
+[2022/01/12 10:22:46] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:22:46] root INFO:     save_interval : 1
+[2022/01/12 10:22:46] root INFO:     seed : 134
+[2022/01/12 10:22:46] root INFO:     use_visualdl : False
+[2022/01/12 10:22:46] root INFO: Loss : 
+[2022/01/12 10:22:46] root INFO:     Eval : 
+[2022/01/12 10:22:46] root INFO:         CELoss : 
+[2022/01/12 10:22:46] root INFO:             weight : 1.0
+[2022/01/12 10:22:46] root INFO:     Train : 
+[2022/01/12 10:22:46] root INFO:         CELoss : 
+[2022/01/12 10:22:46] root INFO:             epsilon : 0.1
+[2022/01/12 10:22:46] root INFO:             weight : 1.0
+[2022/01/12 10:22:46] root INFO: Metric : 
+[2022/01/12 10:22:46] root INFO:     Eval : 
+[2022/01/12 10:22:46] root INFO:         TopkAcc : 
+[2022/01/12 10:22:46] root INFO:             topk : [1]
+[2022/01/12 10:22:46] root INFO: Optimizer : 
+[2022/01/12 10:22:46] root INFO:     lr : 
+[2022/01/12 10:22:46] root INFO:         learning_rate : 0.4
+[2022/01/12 10:22:46] root INFO:         name : Cosine
+[2022/01/12 10:22:46] root INFO:         warmup_epoch : 5
+[2022/01/12 10:22:46] root INFO:     momentum : 0.9
+[2022/01/12 10:22:46] root INFO:     name : Momentum
+[2022/01/12 10:22:46] root INFO:     regularizer : 
+[2022/01/12 10:22:46] root INFO:         coeff : 3e-05
+[2022/01/12 10:22:46] root INFO:         name : L2
+[2022/01/12 10:22:46] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:24:29] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:24:29] root INFO: Arch : 
+[2022/01/12 10:24:29] root INFO:     class_num : 1000
+[2022/01/12 10:24:29] root INFO:     name : mnasnet1_0
+[2022/01/12 10:24:29] root INFO: DataLoader : 
+[2022/01/12 10:24:29] root INFO:     Eval : 
+[2022/01/12 10:24:29] root INFO:         dataset : 
+[2022/01/12 10:24:29] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:24:29] root INFO:             image_root : ../imagenet
+[2022/01/12 10:24:29] root INFO:             name : ImageNetDataset
+[2022/01/12 10:24:29] root INFO:             transform_ops : 
+[2022/01/12 10:24:29] root INFO:                 DecodeImage : 
+[2022/01/12 10:24:29] root INFO:                     channel_first : False
+[2022/01/12 10:24:29] root INFO:                     to_rgb : True
+[2022/01/12 10:24:29] root INFO:                 ResizeImage : 
+[2022/01/12 10:24:29] root INFO:                     resize_short : 256
+[2022/01/12 10:24:29] root INFO:                 CropImage : 
+[2022/01/12 10:24:29] root INFO:                     size : 224
+[2022/01/12 10:24:29] root INFO:                 NormalizeImage : 
+[2022/01/12 10:24:29] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:24:29] root INFO:                     order : 
+[2022/01/12 10:24:29] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:24:29] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:24:29] root INFO:         loader : 
+[2022/01/12 10:24:29] root INFO:             num_workers : 4
+[2022/01/12 10:24:29] root INFO:             use_shared_memory : False
+[2022/01/12 10:24:29] root INFO:         sampler : 
+[2022/01/12 10:24:29] root INFO:             batch_size : 1024
+[2022/01/12 10:24:29] root INFO:             drop_last : False
+[2022/01/12 10:24:29] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:24:29] root INFO:             shuffle : False
+[2022/01/12 10:24:29] root INFO:     Train : 
+[2022/01/12 10:24:29] root INFO:         dataset : 
+[2022/01/12 10:24:29] root INFO:             batch_transform_ops : 
+[2022/01/12 10:24:29] root INFO:                 MixupOperator : 
+[2022/01/12 10:24:29] root INFO:                     alpha : 0.2
+[2022/01/12 10:24:29] root INFO:             cls_label_path : ../imagenet/train_list.txt
+[2022/01/12 10:24:29] root INFO:             image_root : ../imagenet/
+[2022/01/12 10:24:29] root INFO:             name : ImageNetDataset
+[2022/01/12 10:24:29] root INFO:             transform_ops : 
+[2022/01/12 10:24:29] root INFO:                 DecodeImage : 
+[2022/01/12 10:24:29] root INFO:                     channel_first : False
+[2022/01/12 10:24:29] root INFO:                     to_rgb : True
+[2022/01/12 10:24:29] root INFO:                 RandCropImage : 
+[2022/01/12 10:24:29] root INFO:                     size : 224
+[2022/01/12 10:24:29] root INFO:                 RandFlipImage : 
+[2022/01/12 10:24:29] root INFO:                     flip_code : 1
+[2022/01/12 10:24:29] root INFO:                 NormalizeImage : 
+[2022/01/12 10:24:29] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:24:29] root INFO:                     order : 
+[2022/01/12 10:24:29] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:24:29] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:24:29] root INFO:         loader : 
+[2022/01/12 10:24:29] root INFO:             num_workers : 4
+[2022/01/12 10:24:29] root INFO:             use_shared_memory : True
+[2022/01/12 10:24:29] root INFO:         sampler : 
+[2022/01/12 10:24:29] root INFO:             batch_size : 256
+[2022/01/12 10:24:29] root INFO:             drop_last : False
+[2022/01/12 10:24:29] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:24:29] root INFO:             shuffle : True
+[2022/01/12 10:24:29] root INFO: Global : 
+[2022/01/12 10:24:29] root INFO:     checkpoints : None
+[2022/01/12 10:24:29] root INFO:     device : gpu
+[2022/01/12 10:24:29] root INFO:     epochs : 400
+[2022/01/12 10:24:29] root INFO:     eval_during_train : True
+[2022/01/12 10:24:29] root INFO:     eval_interval : 1
+[2022/01/12 10:24:29] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:24:29] root INFO:     output_dir : ./output3/
+[2022/01/12 10:24:29] root INFO:     pretrained_model : epoch_199
+[2022/01/12 10:24:29] root INFO:     print_batch_step : 50
+[2022/01/12 10:24:29] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:24:29] root INFO:     save_interval : 1
+[2022/01/12 10:24:29] root INFO:     seed : 134
+[2022/01/12 10:24:29] root INFO:     use_visualdl : False
+[2022/01/12 10:24:29] root INFO: Loss : 
+[2022/01/12 10:24:29] root INFO:     Eval : 
+[2022/01/12 10:24:29] root INFO:         CELoss : 
+[2022/01/12 10:24:29] root INFO:             weight : 1.0
+[2022/01/12 10:24:29] root INFO:     Train : 
+[2022/01/12 10:24:29] root INFO:         CELoss : 
+[2022/01/12 10:24:29] root INFO:             epsilon : 0.1
+[2022/01/12 10:24:29] root INFO:             weight : 1.0
+[2022/01/12 10:24:29] root INFO: Metric : 
+[2022/01/12 10:24:29] root INFO:     Eval : 
+[2022/01/12 10:24:29] root INFO:         TopkAcc : 
+[2022/01/12 10:24:29] root INFO:             topk : [1]
+[2022/01/12 10:24:29] root INFO: Optimizer : 
+[2022/01/12 10:24:29] root INFO:     lr : 
+[2022/01/12 10:24:29] root INFO:         learning_rate : 0.4
+[2022/01/12 10:24:29] root INFO:         name : Cosine
+[2022/01/12 10:24:29] root INFO:         warmup_epoch : 5
+[2022/01/12 10:24:29] root INFO:     momentum : 0.9
+[2022/01/12 10:24:29] root INFO:     name : Momentum
+[2022/01/12 10:24:29] root INFO:     regularizer : 
+[2022/01/12 10:24:29] root INFO:         coeff : 3e-05
+[2022/01/12 10:24:29] root INFO:         name : L2
+[2022/01/12 10:24:29] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:26:06] root INFO: [Eval][Epoch 0][Iter: 0/49]CELoss: 1.20819, loss: 1.20819, top1: 0.73535, batch_cost: 92.40445s, reader_cost: 91.53667, ips: 11.08172 images/sec
+[2022/01/12 10:32:35] root INFO: [Eval][Epoch 0][Avg]CELoss: 1.22744, loss: 1.22744, top1: 0.73434
+[2022/01/12 10:33:50] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:33:50] root INFO: Arch : 
+[2022/01/12 10:33:50] root INFO:     class_num : 1000
+[2022/01/12 10:33:50] root INFO:     name : mnasnet1_0
+[2022/01/12 10:33:50] root INFO: DataLoader : 
+[2022/01/12 10:33:50] root INFO:     Eval : 
+[2022/01/12 10:33:50] root INFO:         dataset : 
+[2022/01/12 10:33:50] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:33:50] root INFO:             image_root : ../imagenet
+[2022/01/12 10:33:50] root INFO:             name : ImageNetDataset
+[2022/01/12 10:33:50] root INFO:             transform_ops : 
+[2022/01/12 10:33:50] root INFO:                 DecodeImage : 
+[2022/01/12 10:33:50] root INFO:                     channel_first : False
+[2022/01/12 10:33:50] root INFO:                     to_rgb : True
+[2022/01/12 10:33:50] root INFO:                 ResizeImage : 
+[2022/01/12 10:33:50] root INFO:                     resize_short : 256
+[2022/01/12 10:33:50] root INFO:                 CropImage : 
+[2022/01/12 10:33:50] root INFO:                     size : 224
+[2022/01/12 10:33:50] root INFO:                 NormalizeImage : 
+[2022/01/12 10:33:50] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:33:50] root INFO:                     order : 
+[2022/01/12 10:33:50] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:33:50] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:33:50] root INFO:         loader : 
+[2022/01/12 10:33:50] root INFO:             num_workers : 4
+[2022/01/12 10:33:50] root INFO:             use_shared_memory : False
+[2022/01/12 10:33:50] root INFO:         sampler : 
+[2022/01/12 10:33:50] root INFO:             batch_size : 256
+[2022/01/12 10:33:50] root INFO:             drop_last : False
+[2022/01/12 10:33:50] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:33:50] root INFO:             shuffle : False
+[2022/01/12 10:33:50] root INFO:     Train : 
+[2022/01/12 10:33:50] root INFO:         dataset : 
+[2022/01/12 10:33:50] root INFO:             batch_transform_ops : 
+[2022/01/12 10:33:50] root INFO:                 MixupOperator : 
+[2022/01/12 10:33:50] root INFO:                     alpha : 0.2
+[2022/01/12 10:33:50] root INFO:             cls_label_path : ../imagenet/train_list.txt
+[2022/01/12 10:33:50] root INFO:             image_root : ../imagenet/
+[2022/01/12 10:33:50] root INFO:             name : ImageNetDataset
+[2022/01/12 10:33:50] root INFO:             transform_ops : 
+[2022/01/12 10:33:50] root INFO:                 DecodeImage : 
+[2022/01/12 10:33:50] root INFO:                     channel_first : False
+[2022/01/12 10:33:50] root INFO:                     to_rgb : True
+[2022/01/12 10:33:50] root INFO:                 RandCropImage : 
+[2022/01/12 10:33:50] root INFO:                     size : 224
+[2022/01/12 10:33:50] root INFO:                 RandFlipImage : 
+[2022/01/12 10:33:50] root INFO:                     flip_code : 1
+[2022/01/12 10:33:50] root INFO:                 NormalizeImage : 
+[2022/01/12 10:33:50] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:33:50] root INFO:                     order : 
+[2022/01/12 10:33:50] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:33:50] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:33:50] root INFO:         loader : 
+[2022/01/12 10:33:50] root INFO:             num_workers : 4
+[2022/01/12 10:33:50] root INFO:             use_shared_memory : True
+[2022/01/12 10:33:50] root INFO:         sampler : 
+[2022/01/12 10:33:50] root INFO:             batch_size : 256
+[2022/01/12 10:33:50] root INFO:             drop_last : False
+[2022/01/12 10:33:50] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:33:50] root INFO:             shuffle : True
+[2022/01/12 10:33:50] root INFO: Global : 
+[2022/01/12 10:33:50] root INFO:     checkpoints : None
+[2022/01/12 10:33:50] root INFO:     device : gpu
+[2022/01/12 10:33:50] root INFO:     epochs : 400
+[2022/01/12 10:33:50] root INFO:     eval_during_train : True
+[2022/01/12 10:33:50] root INFO:     eval_interval : 1
+[2022/01/12 10:33:50] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:33:50] root INFO:     output_dir : ./output3/
+[2022/01/12 10:33:50] root INFO:     pretrained_model : lastest
+[2022/01/12 10:33:50] root INFO:     print_batch_step : 50
+[2022/01/12 10:33:50] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:33:50] root INFO:     save_interval : 1
+[2022/01/12 10:33:50] root INFO:     seed : 134
+[2022/01/12 10:33:50] root INFO:     use_visualdl : False
+[2022/01/12 10:33:50] root INFO: Loss : 
+[2022/01/12 10:33:50] root INFO:     Eval : 
+[2022/01/12 10:33:50] root INFO:         CELoss : 
+[2022/01/12 10:33:50] root INFO:             weight : 1.0
+[2022/01/12 10:33:50] root INFO:     Train : 
+[2022/01/12 10:33:50] root INFO:         CELoss : 
+[2022/01/12 10:33:50] root INFO:             epsilon : 0.1
+[2022/01/12 10:33:50] root INFO:             weight : 1.0
+[2022/01/12 10:33:50] root INFO: Metric : 
+[2022/01/12 10:33:50] root INFO:     Eval : 
+[2022/01/12 10:33:50] root INFO:         TopkAcc : 
+[2022/01/12 10:33:50] root INFO:             topk : [1]
+[2022/01/12 10:33:50] root INFO: Optimizer : 
+[2022/01/12 10:33:50] root INFO:     lr : 
+[2022/01/12 10:33:50] root INFO:         learning_rate : 0.4
+[2022/01/12 10:33:50] root INFO:         name : Cosine
+[2022/01/12 10:33:50] root INFO:         warmup_epoch : 5
+[2022/01/12 10:33:50] root INFO:     momentum : 0.9
+[2022/01/12 10:33:50] root INFO:     name : Momentum
+[2022/01/12 10:33:50] root INFO:     regularizer : 
+[2022/01/12 10:33:50] root INFO:         coeff : 3e-05
+[2022/01/12 10:33:50] root INFO:         name : L2
+[2022/01/12 10:33:50] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:34:16] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:34:16] root INFO: Arch : 
+[2022/01/12 10:34:16] root INFO:     class_num : 1000
+[2022/01/12 10:34:16] root INFO:     name : mnasnet1_0
+[2022/01/12 10:34:16] root INFO: DataLoader : 
+[2022/01/12 10:34:16] root INFO:     Eval : 
+[2022/01/12 10:34:16] root INFO:         dataset : 
+[2022/01/12 10:34:16] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:34:16] root INFO:             image_root : ../imagenet
+[2022/01/12 10:34:16] root INFO:             name : ImageNetDataset
+[2022/01/12 10:34:16] root INFO:             transform_ops : 
+[2022/01/12 10:34:16] root INFO:                 DecodeImage : 
+[2022/01/12 10:34:16] root INFO:                     channel_first : False
+[2022/01/12 10:34:16] root INFO:                     to_rgb : True
+[2022/01/12 10:34:16] root INFO:                 ResizeImage : 
+[2022/01/12 10:34:16] root INFO:                     resize_short : 256
+[2022/01/12 10:34:16] root INFO:                 CropImage : 
+[2022/01/12 10:34:16] root INFO:                     size : 224
+[2022/01/12 10:34:16] root INFO:                 NormalizeImage : 
+[2022/01/12 10:34:16] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:34:16] root INFO:                     order : 
+[2022/01/12 10:34:16] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:34:16] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:34:16] root INFO:         loader : 
+[2022/01/12 10:34:16] root INFO:             num_workers : 4
+[2022/01/12 10:34:16] root INFO:             use_shared_memory : False
+[2022/01/12 10:34:16] root INFO:         sampler : 
+[2022/01/12 10:34:16] root INFO:             batch_size : 256
+[2022/01/12 10:34:16] root INFO:             drop_last : False
+[2022/01/12 10:34:16] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:34:16] root INFO:             shuffle : False
+[2022/01/12 10:34:16] root INFO:     Train : 
+[2022/01/12 10:34:16] root INFO:         dataset : 
+[2022/01/12 10:34:16] root INFO:             batch_transform_ops : 
+[2022/01/12 10:34:16] root INFO:                 MixupOperator : 
+[2022/01/12 10:34:16] root INFO:                     alpha : 0.2
+[2022/01/12 10:34:16] root INFO:             cls_label_path : ../imagenet/train_list.txt
+[2022/01/12 10:34:16] root INFO:             image_root : ../imagenet/
+[2022/01/12 10:34:16] root INFO:             name : ImageNetDataset
+[2022/01/12 10:34:16] root INFO:             transform_ops : 
+[2022/01/12 10:34:16] root INFO:                 DecodeImage : 
+[2022/01/12 10:34:16] root INFO:                     channel_first : False
+[2022/01/12 10:34:16] root INFO:                     to_rgb : True
+[2022/01/12 10:34:16] root INFO:                 RandCropImage : 
+[2022/01/12 10:34:16] root INFO:                     size : 224
+[2022/01/12 10:34:16] root INFO:                 RandFlipImage : 
+[2022/01/12 10:34:16] root INFO:                     flip_code : 1
+[2022/01/12 10:34:16] root INFO:                 NormalizeImage : 
+[2022/01/12 10:34:16] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:34:16] root INFO:                     order : 
+[2022/01/12 10:34:16] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:34:16] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:34:16] root INFO:         loader : 
+[2022/01/12 10:34:16] root INFO:             num_workers : 4
+[2022/01/12 10:34:16] root INFO:             use_shared_memory : True
+[2022/01/12 10:34:16] root INFO:         sampler : 
+[2022/01/12 10:34:16] root INFO:             batch_size : 256
+[2022/01/12 10:34:16] root INFO:             drop_last : False
+[2022/01/12 10:34:16] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:34:16] root INFO:             shuffle : True
+[2022/01/12 10:34:16] root INFO: Global : 
+[2022/01/12 10:34:16] root INFO:     checkpoints : None
+[2022/01/12 10:34:16] root INFO:     device : gpu
+[2022/01/12 10:34:16] root INFO:     epochs : 400
+[2022/01/12 10:34:16] root INFO:     eval_during_train : True
+[2022/01/12 10:34:16] root INFO:     eval_interval : 1
+[2022/01/12 10:34:16] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:34:16] root INFO:     output_dir : ./output3/
+[2022/01/12 10:34:16] root INFO:     pretrained_model : latest
+[2022/01/12 10:34:16] root INFO:     print_batch_step : 50
+[2022/01/12 10:34:16] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:34:16] root INFO:     save_interval : 1
+[2022/01/12 10:34:16] root INFO:     seed : 134
+[2022/01/12 10:34:16] root INFO:     use_visualdl : False
+[2022/01/12 10:34:16] root INFO: Loss : 
+[2022/01/12 10:34:16] root INFO:     Eval : 
+[2022/01/12 10:34:16] root INFO:         CELoss : 
+[2022/01/12 10:34:16] root INFO:             weight : 1.0
+[2022/01/12 10:34:16] root INFO:     Train : 
+[2022/01/12 10:34:16] root INFO:         CELoss : 
+[2022/01/12 10:34:16] root INFO:             epsilon : 0.1
+[2022/01/12 10:34:16] root INFO:             weight : 1.0
+[2022/01/12 10:34:16] root INFO: Metric : 
+[2022/01/12 10:34:16] root INFO:     Eval : 
+[2022/01/12 10:34:16] root INFO:         TopkAcc : 
+[2022/01/12 10:34:16] root INFO:             topk : [1]
+[2022/01/12 10:34:16] root INFO: Optimizer : 
+[2022/01/12 10:34:16] root INFO:     lr : 
+[2022/01/12 10:34:16] root INFO:         learning_rate : 0.4
+[2022/01/12 10:34:16] root INFO:         name : Cosine
+[2022/01/12 10:34:16] root INFO:         warmup_epoch : 5
+[2022/01/12 10:34:16] root INFO:     momentum : 0.9
+[2022/01/12 10:34:16] root INFO:     name : Momentum
+[2022/01/12 10:34:16] root INFO:     regularizer : 
+[2022/01/12 10:34:16] root INFO:         coeff : 3e-05
+[2022/01/12 10:34:16] root INFO:         name : L2
+[2022/01/12 10:34:16] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:34:35] root INFO: [Eval][Epoch 0][Iter: 0/196]CELoss: 1.29870, loss: 1.29870, top1: 0.71094, batch_cost: 14.64176s, reader_cost: 14.23803, ips: 17.48423 images/sec
+[2022/01/12 10:36:13] root INFO: [Eval][Epoch 0][Iter: 50/196]CELoss: 1.30550, loss: 1.30550, top1: 0.71484, batch_cost: 1.97827s, reader_cost: 1.73709, ips: 129.40593 images/sec
+[2022/01/12 10:38:01] root INFO: [Eval][Epoch 0][Iter: 100/196]CELoss: 1.31279, loss: 1.31279, top1: 0.70312, batch_cost: 2.07209s, reader_cost: 1.84475, ips: 123.54701 images/sec
+[2022/01/12 10:39:41] root INFO: [Eval][Epoch 0][Iter: 150/196]CELoss: 1.24130, loss: 1.24130, top1: 0.72266, batch_cost: 2.04809s, reader_cost: 1.83296, ips: 124.99475 images/sec
+[2022/01/12 10:41:07] root INFO: [Eval][Epoch 0][Avg]CELoss: 1.25067, loss: 1.25067, top1: 0.73384
+[2022/01/12 10:42:14] root INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2022/01/12 10:42:14] root INFO: Arch : 
+[2022/01/12 10:42:14] root INFO:     class_num : 1000
+[2022/01/12 10:42:14] root INFO:     name : mnasnet1_0
+[2022/01/12 10:42:14] root INFO: DataLoader : 
+[2022/01/12 10:42:14] root INFO:     Eval : 
+[2022/01/12 10:42:14] root INFO:         dataset : 
+[2022/01/12 10:42:14] root INFO:             cls_label_path : ../imagenet/val_list.txt
+[2022/01/12 10:42:14] root INFO:             image_root : ../imagenet
+[2022/01/12 10:42:14] root INFO:             name : ImageNetDataset
+[2022/01/12 10:42:14] root INFO:             transform_ops : 
+[2022/01/12 10:42:14] root INFO:                 DecodeImage : 
+[2022/01/12 10:42:14] root INFO:                     channel_first : False
+[2022/01/12 10:42:14] root INFO:                     to_rgb : True
+[2022/01/12 10:42:14] root INFO:                 ResizeImage : 
+[2022/01/12 10:42:14] root INFO:                     resize_short : 256
+[2022/01/12 10:42:14] root INFO:                 CropImage : 
+[2022/01/12 10:42:14] root INFO:                     size : 224
+[2022/01/12 10:42:14] root INFO:                 NormalizeImage : 
+[2022/01/12 10:42:14] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:42:14] root INFO:                     order : 
+[2022/01/12 10:42:14] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:42:14] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:42:14] root INFO:         loader : 
+[2022/01/12 10:42:14] root INFO:             num_workers : 4
+[2022/01/12 10:42:14] root INFO:             use_shared_memory : False
+[2022/01/12 10:42:14] root INFO:         sampler : 
+[2022/01/12 10:42:14] root INFO:             batch_size : 256
+[2022/01/12 10:42:14] root INFO:             drop_last : False
+[2022/01/12 10:42:14] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:42:14] root INFO:             shuffle : False
+[2022/01/12 10:42:14] root INFO:     Train : 
+[2022/01/12 10:42:14] root INFO:         dataset : 
+[2022/01/12 10:42:14] root INFO:             batch_transform_ops : 
+[2022/01/12 10:42:14] root INFO:                 MixupOperator : 
+[2022/01/12 10:42:14] root INFO:                     alpha : 0.2
+[2022/01/12 10:42:14] root INFO:             cls_label_path : ../imagenet/train_list.txt
+[2022/01/12 10:42:14] root INFO:             image_root : ../imagenet/
+[2022/01/12 10:42:14] root INFO:             name : ImageNetDataset
+[2022/01/12 10:42:14] root INFO:             transform_ops : 
+[2022/01/12 10:42:14] root INFO:                 DecodeImage : 
+[2022/01/12 10:42:14] root INFO:                     channel_first : False
+[2022/01/12 10:42:14] root INFO:                     to_rgb : True
+[2022/01/12 10:42:14] root INFO:                 RandCropImage : 
+[2022/01/12 10:42:14] root INFO:                     size : 224
+[2022/01/12 10:42:14] root INFO:                 RandFlipImage : 
+[2022/01/12 10:42:14] root INFO:                     flip_code : 1
+[2022/01/12 10:42:14] root INFO:                 NormalizeImage : 
+[2022/01/12 10:42:14] root INFO:                     mean : [0.485, 0.456, 0.406]
+[2022/01/12 10:42:14] root INFO:                     order : 
+[2022/01/12 10:42:14] root INFO:                     scale : 1.0/255.0
+[2022/01/12 10:42:14] root INFO:                     std : [0.229, 0.224, 0.225]
+[2022/01/12 10:42:14] root INFO:         loader : 
+[2022/01/12 10:42:14] root INFO:             num_workers : 4
+[2022/01/12 10:42:14] root INFO:             use_shared_memory : True
+[2022/01/12 10:42:14] root INFO:         sampler : 
+[2022/01/12 10:42:14] root INFO:             batch_size : 256
+[2022/01/12 10:42:14] root INFO:             drop_last : False
+[2022/01/12 10:42:14] root INFO:             name : DistributedBatchSampler
+[2022/01/12 10:42:14] root INFO:             shuffle : True
+[2022/01/12 10:42:14] root INFO: Global : 
+[2022/01/12 10:42:14] root INFO:     checkpoints : None
+[2022/01/12 10:42:14] root INFO:     device : gpu
+[2022/01/12 10:42:14] root INFO:     epochs : 400
+[2022/01/12 10:42:14] root INFO:     eval_during_train : True
+[2022/01/12 10:42:14] root INFO:     eval_interval : 1
+[2022/01/12 10:42:14] root INFO:     image_shape : [3, 224, 224]
+[2022/01/12 10:42:14] root INFO:     output_dir : ./output3/
+[2022/01/12 10:42:14] root INFO:     pretrained_model : epoch_199
+[2022/01/12 10:42:14] root INFO:     print_batch_step : 50
+[2022/01/12 10:42:14] root INFO:     save_inference_dir : ./inference
+[2022/01/12 10:42:14] root INFO:     save_interval : 1
+[2022/01/12 10:42:14] root INFO:     seed : 134
+[2022/01/12 10:42:14] root INFO:     use_visualdl : False
+[2022/01/12 10:42:14] root INFO: Loss : 
+[2022/01/12 10:42:14] root INFO:     Eval : 
+[2022/01/12 10:42:14] root INFO:         CELoss : 
+[2022/01/12 10:42:14] root INFO:             weight : 1.0
+[2022/01/12 10:42:14] root INFO:     Train : 
+[2022/01/12 10:42:14] root INFO:         CELoss : 
+[2022/01/12 10:42:14] root INFO:             epsilon : 0.1
+[2022/01/12 10:42:14] root INFO:             weight : 1.0
+[2022/01/12 10:42:14] root INFO: Metric : 
+[2022/01/12 10:42:14] root INFO:     Eval : 
+[2022/01/12 10:42:14] root INFO:         TopkAcc : 
+[2022/01/12 10:42:14] root INFO:             topk : [1]
+[2022/01/12 10:42:14] root INFO: Optimizer : 
+[2022/01/12 10:42:14] root INFO:     lr : 
+[2022/01/12 10:42:14] root INFO:         learning_rate : 0.4
+[2022/01/12 10:42:14] root INFO:         name : Cosine
+[2022/01/12 10:42:14] root INFO:         warmup_epoch : 5
+[2022/01/12 10:42:14] root INFO:     momentum : 0.9
+[2022/01/12 10:42:14] root INFO:     name : Momentum
+[2022/01/12 10:42:14] root INFO:     regularizer : 
+[2022/01/12 10:42:14] root INFO:         coeff : 3e-05
+[2022/01/12 10:42:14] root INFO:         name : L2
+[2022/01/12 10:42:14] root INFO: train with paddle 2.2.1 and device CUDAPlace(0)
+[2022/01/12 10:42:29] root INFO: [Eval][Epoch 0][Iter: 0/196]CELoss: 1.28226, loss: 1.28226, top1: 0.71094, batch_cost: 9.87903s, reader_cost: 9.67461, ips: 25.91347 images/sec
+[2022/01/12 10:44:09] root INFO: [Eval][Epoch 0][Iter: 50/196]CELoss: 1.28412, loss: 1.28412, top1: 0.71484, batch_cost: 2.03062s, reader_cost: 1.82582, ips: 126.07014 images/sec
+[2022/01/12 10:45:53] root INFO: [Eval][Epoch 0][Iter: 100/196]CELoss: 1.29052, loss: 1.29052, top1: 0.70703, batch_cost: 2.05849s, reader_cost: 1.86201, ips: 124.36312 images/sec
+[2022/01/12 10:47:33] root INFO: [Eval][Epoch 0][Iter: 150/196]CELoss: 1.21624, loss: 1.21624, top1: 0.73047, batch_cost: 2.03696s, reader_cost: 1.84207, ips: 125.67721 images/sec
+[2022/01/12 10:49:04] root INFO: [Eval][Epoch 0][Avg]CELoss: 1.22744, loss: 1.22744, top1: 0.73434
