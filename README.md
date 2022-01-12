@@ -22,7 +22,7 @@ stage2.log中best_model的top1为0.7347，但是用eval.py评估时却达不到�
  
 
 ### 2.1 log信息说明
-训练分为三个阶段
+训练分为两个阶段
 1. 用[config1](./configs/local/mnasnet_0_2.yaml)训练301epoch，设备Titan XP * 4
 2. 加载阶段1的epoch_301权重，用[config2](./configs/local/mnasnet_0_3.yaml)训练200epoch，设备aistudio v100 * 4
 
@@ -32,7 +32,7 @@ stage2.log中best_model的top1为0.7347，但是用eval.py评估时却达不到�
 ## 4. 快速开始
 ### 4.1克隆本项目
 ```
-https://github.com/renmada/OctConv-paddle.git
+https://github.com/renmada/MnasNet-paddle.git
 ```
 ### 4.2 下载数据集，放到指定位置
 ### 4.3 一阶段训练
@@ -47,6 +47,7 @@ python -m paddle.distributed.launch tools/train.py -c ./configs/local/mnasnet_0_
 
 python -m paddle.distributed.launch tools/train.py -c ./configs/local/mnasnet_0_3.yaml
 ```
+[aistudio](https://aistudio.baidu.com/aistudio/clusterprojectdetail/3394082)一键复现
 
 ### 4.5 相关文件
 |         阶段        | log | 权重 |
