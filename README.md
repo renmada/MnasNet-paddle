@@ -1,4 +1,4 @@
-# 基于PaddleClas复现 Drop an Octave: Reducing Spatial Redundancy in Convolutional Neural Networks with Octave Convolution
+# 基于PaddleClas复现 MnasNet: Platform-Aware Neural Architecture Search for Mobile
 ## 1. 简介
 论文提出了移动端的神经网络架构搜索方法，该方法主要有两个思路，首先使用多目标优化方法将模型在实际设备上的耗时融入搜索中，然后使用分解的层次搜索空间，来让网络保持层多样性的同时，搜索空间依然很简洁，能够使得搜索的模型在准确率和耗时中有更好的trade off
 ### 1.1 模型结构说明
