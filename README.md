@@ -1,24 +1,32 @@
 # 基于PaddleClas复现 Drop an Octave: Reducing Spatial Redundancy in Convolutional Neural Networks with Octave Convolution
 ## 1. 简介
-传统的图像处理,将图像按照高频和低频分离,花费更多的精力在高频部分(如图像压缩,低频数据更高的压缩率而高频数据得到更多的保留). OctConv将这种思想引入到cnn的特征图中,将特征图分离为高频部分和低频部分,同时高低频部分相互通信,卷积核也分成作用于高频和低频的部分.实验表明, OctConv 对2D和3D都有效,降低计算量的同时,精度不丢甚至有所提升
+论文提出了移动端的神经网络架构搜索方法，该方法主要有两个思路，首先使用多目标优化方法将模型在实际设备上的耗时融入搜索中，然后使用分解的层次搜索空间，来让网络保持层多样性的同时，搜索空间依然很简洁，能够使得搜索的模型在准确率和耗时中有更好的trade off
+### 1.1 模型结构说明
+- 根据MnasNet[参考代码](https://github.com/pytorch/vision/blob/master/torchvision/models/mnasnet.py)复现，val的acc在0.6左右一直上不去。
+- 参照[mxnet版本](https://github.com/chinakook/Mnasnet.MXNet)，在参考代码的结构上添加一层relu激活函数，此后的模型表现正常
+
+![添加结构](./pic/结构.png)
+**[模型网络代码](./ppcls/arch/backbone/model_zoo/mnasnet.py)**
 
 ## 2. 数据集和复现精度
 数据集使用ImageNet 2012的训练数据集，有1000类，训练集图片有1281167张，验证集图片有50000张，大小为144GB  
 aistudio上的地址为：https://aistudio.baidu.com/aistudio/datasetdetail/79807  
+### 2.1 补充说明
+存在奇怪的问题，训练时的评估精度与单独评估时的精度不一致。（训练两次都存在该情况）
+stage2.log中best_model的top1为0.7347，但是用eval.py评估时却达不到这个精度。报告的复现精度以eval.py的为最终结果
 
-|         Model        | alpha | label smoothing[2] | mixup[3] |#Params | #FLOPs |  Top1 / Top5 |
-|:--------------------:|:-----:|:------------------:|:--------:|:------:|:------:|:------------:|
-| 1.125 MobileNet_v2(论文)|  .5   |         Yes        |   Yes       |  4.2 M |  295 M | 73.0 / 91.2 |
-| 1.125 MobileNet_v2(复现)|  .5 |         Yes        |   Yes    | 4.2 M | - |  72.95 / - |
+|         Model        | Top1|
+|:--------------------:|:-----:|
+| MnasNet-A ([torchvision实现](https://github.com/pytorch/vision/blob/master/torchvision/models/mnasnet.py))| 73.5|
+| MnasNet-A (复现)|  73.43|
  
 
 ### 2.1 log信息说明
-因为受到aistudio脚本任务的最大时长限制，所以训练分为两个阶段
-1. 用[config1](train1.yaml)的配置训练200epoch
-2. 加载阶段1的epoch_200权重，用[config2](train2.yaml)的配置训练200epoch
+训练分为三个阶段
+1. 用[config1](./configs/local/mnasnet_0_2.yaml)训练301epoch，设备Titan XP * 4
+2. 加载阶段1的epoch_301权重，用[config2](./configs/local/mnasnet_0_3.yaml)训练200epoch，设备aistudio v100 * 4
 
 ## 3. 准备环境
-* 硬件：Tesla V100 * 4
 * 框架：PaddlePaddle == 2.2.0
 
 ## 4. 快速开始
@@ -29,43 +37,33 @@ https://github.com/renmada/OctConv-paddle.git
 ### 4.2 下载数据集，放到指定位置
 ### 4.3 一阶段训练
 ```
-# 修改train1.yaml中的output_dir image_root cls_label_path的路径
+# 修改./configs/local/mnasnet_0_2.yaml中的output_dir image_root cls_label_path的路径
 
-python -m paddle.distributed.launch tools/train.py -c train1.yaml
+python -m paddle.distributed.launch tools/train.py -c ./configs/local/mnasnet_0_2.yaml
 ```
 ### 4.4 二阶段训练
 ```
-# 修改train2.yaml中的output_dir image_root cls_label_path pretrained_model的路径
+# 修改./configs/local/mnasnet_0_3.yaml中的output_dir image_root cls_label_path pretrained_model的路径
 
-python -m paddle.distributed.launch tools/train.py -c train2.yaml
+python -m paddle.distributed.launch tools/train.py -c ./configs/local/mnasnet_0_3.yaml
 ```
-此阶段可以在[aistudio](https://aistudio.baidu.com/aistudio/clusterprojectdetail/3199634)上直接运行
 
 ### 4.5 相关文件
 |         阶段        | log | 权重 |
 |:--------------------:|:-----:|:------------------:|
-| stage1|  [stage1.log](./log/stage1.log)   | [epoch_200](https://aistudio.baidu.com/aistudio/datasetdetail/122215)|  
-| stage2|  [stage2.log](./log/stage2.log)|  [best_model](https://aistudio.baidu.com/aistudio/datasetdetail/122215) | 
-|eval|[eval.log](./log/eval.log)|[best_model](https://aistudio.baidu.com/aistudio/datasetdetail/122215)|
+| stage1|  [stage1.log](./log/stage1.log)   | [epoch_301](./checkpoint)|  
+| stage2|  [stage2.log](./log/stage2.log)|  [epoch199](./checkpoint) | 
+|eval|[eval.log](./log/eval.log)|[epoch199](./checkpoint)|
 
-**[模型网络代码](./ppcls/arch/backbone/model_zoo/oct_mobilenet_v2.py)**
 
-### 4.6 本地训练
-如果在本地机器训练，可以用train.yaml一次性完成训练
-```
-# 修改train.yaml中的output_dir image_root cls_label_path的路径
-
-python -m paddle.distributed.launch tools/train.py -c train.yaml
-```
-
-### 4.7 评估
+### 4.6 评估
 ```
 # 修改eval.yaml中的output_dir image_root cls_label_path pretrained_model的路径
 
-python  tools/eval.py -c eval.yaml
+python tools/eval.py -c configs/local/mnasnet_0_3.yaml -o Global.pretrained_model=epoch_199
 ```
 
-### 4.8 预测
+### 4.7 预测
 ```
 # infer.yaml中的infer_imgs image_root cls_label_path pretrained_model的路径
 
@@ -74,15 +72,13 @@ python tools/infer.py -c infer.yaml
 
 demo图片预测结果
 ```
-[{'class_ids': [285, 281, 282, 287, 286], 'scores': [0.27909, 0.20617, 0.06177, 0.01999, 0.0168], 'file_name': 'demo/cat.jpg', 'label_names': ['Egyptian cat', 'tabby, tabby cat', 'tiger cat', 'lynx, catamount', 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor']}]
+[{'class_ids': [281, 287, 285, 282, 286], 'scores': [0.37849, 0.21314, 0.14284, 0.03594, 0.01698], 'file_name': 'demo/cat.jpg', 'label_names': ['tabby, tabby cat', 'lynx, catamount', 'Egyptian cat', 'tiger cat', 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor']}]```
+## 5 tipc轻量测试
+```bash
+# 准备数据
+bash test_tipc/prepare.sh ./test_tipc/config/mnasnet/mnasnet1_0_train_infer_python.txt 'lite_train_lite_infer'
+# 运行测试
+bash test_tipc/test_train_inference_python.sh ./test_tipc/config/mnasnet/mnasnet1_0_train_infer_python.txt 'lite_train_lite_infer'
 ```
 
-## 5 引用
-```
-@article{chen2019drop,
-  title={Drop an Octave: Reducing Spatial Redundancy in Convolutional Neural Networks with Octave Convolution},
-  author={Chen, Yunpeng and Fan, Haoqi and Xu, Bing and Yan, Zhicheng and Kalantidis, Yannis and Rohrbach, Marcus and Yan, Shuicheng and Feng, Jiashi},
-  journal={Proceedings of the IEEE International Conference on Computer Vision},
-  year={2019}
-}
-```
+
