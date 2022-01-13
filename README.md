@@ -70,8 +70,7 @@ python tools/eval.py -c configs/local/mnasnet_0_3.yaml -o Global.pretrained_mode
 
 python tools/infer.py -c infer.yaml
 ```
-![添加结构](./demo/cat.jpg)
-demo图片预测结果
+<img src="./demo/cat.jpg" width = "200" height = "300" alt="" align=center />demo图片预测结果
 
 ```
 [{'class_ids': [281, 287, 285, 282, 286], 'scores': [0.37849, 0.21314, 0.14284, 0.03594, 0.01698], 'file_name': 'demo/cat.jpg', 'label_names': ['tabby, tabby cat', 'lynx, catamount', 'Egyptian cat', 'tiger cat', 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor']}]```
