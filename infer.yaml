@@ -18,7 +18,7 @@ Global:
 
 # model architecture
 Arch:
-  name: OctMobileNetV2_x1_125
+  name: mnasnet1_0
   class_num: 1000
 
 # loss function config for traing/eval process
